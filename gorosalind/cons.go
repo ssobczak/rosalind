@@ -1,26 +1,12 @@
+// Copyright 2013 Szymon Sobczak: http://about.me/ssobczak
+// Licensed under the MIT license: http://opensource.org/licenses/MIT
+// The above copyright notice shall be included in all copies or substantial portions of the Software.
+
 package gorosalind
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
-
-func read_sequences() (seq []string) {
-	seq = make([]string, 0)
-
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		line := scanner.Text()
-		if line[0] == '>' {
-			seq = append(seq, "")
-		} else {
-			seq[len(seq)-1] += line
-		}
-	}
-
-	return
-}
 
 var atoi = map[byte]int{
 	'A': 0,
@@ -47,10 +33,9 @@ func index_of_max(a []int) (ret int) {
 	return
 }
 
-func Cons() {
-	seqences := read_sequences()
+func cons(dna []Dna) (profile [][]int) {
+	profile = make([][]int, len(dna[0].sequence))
 
-	profile := make([][]int, len(seqences[0]))
 	for k := range profile {
 		profile[k] = make([]int, 4)
 		for i := range profile[k] {
@@ -58,11 +43,19 @@ func Cons() {
 		}
 	}
 
-	for _, seq := range seqences {
-		for i := range seq {
-			profile[i][atoi[seq[i]]]++
+	for _, d := range dna {
+		for i := range d.sequence {
+			profile[i][atoi[d.sequence[i]]]++
 		}
 	}
+
+	return
+}
+
+func Cons() {
+	fasta := FileFromStdin()
+	dna := DnaFromFasta(fasta)
+	profile := cons(dna)
 
 	for _, pr := range profile {
 		fmt.Printf("%c", itoa[index_of_max(pr)])
