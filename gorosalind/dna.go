@@ -18,8 +18,12 @@ func DnaFromFasta(fasta string) (ret []Dna) {
 
 	lines := strings.Split(fasta, "\n")
 	for _, line := range lines {
+		if len(line) == 0 {
+			continue
+		}
+
 		if line[0] == '>' {
-			ret = append(ret, Dna{line[1 : len(line)-1], ""})
+			ret = append(ret, Dna{line[1:len(line)], ""})
 		} else {
 			ret[len(ret)-1].sequence += line
 		}
