@@ -9,5 +9,5 @@ import (
 )
 
 func main() {
-	gorosalind.Mrna()
+	gorosalind.Pper()
 }
