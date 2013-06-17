@@ -2,12 +2,18 @@
 // Licensed under the MIT license: http://opensource.org/licenses/MIT
 // The above copyright notice shall be included in all copies or substantial portions of the Software.
 
-package main
+package gorosalind
 
 import (
-	"github.com/ssobczak/rosalind/gorosalind"
+	"bufio"
+	"os"
 )
 
-func main() {
-	gorosalind.Pper()
+func FileFromStdin() (ret string) {
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		ret += scanner.Text() + "\n"
+	}
+
+	return
 }

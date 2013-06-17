@@ -2,12 +2,15 @@
 // Licensed under the MIT license: http://opensource.org/licenses/MIT
 // The above copyright notice shall be included in all copies or substantial portions of the Software.
 
-package main
+package gorosalind
 
 import (
-	"github.com/ssobczak/rosalind/gorosalind"
+	"testing"
 )
 
-func main() {
-	gorosalind.Pper()
+func TestDna_parse(t *testing.T) {
+	dna := DnaFromFasta(">first\nAAATAAA\n>second\nAAATTTT")
+	if len(dna) != 2 {
+		t.Error("length doesn't match")
+	}
 }
