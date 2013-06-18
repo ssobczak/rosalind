@@ -43,7 +43,7 @@ func next_permutation(a []int) bool {
 	return false
 }
 
-func print(a []int) {
+func printPerm(a []int) {
 	for _, v := range a {
 		fmt.Printf("%d ", v)
 	}
@@ -64,8 +64,8 @@ func Perm() {
 		a[k] = k + 1
 	}
 
-	print(a)
+	printPerm(a)
 	for next_permutation(a) {
-		print(a)
+		printPerm(a)
 	}
 }

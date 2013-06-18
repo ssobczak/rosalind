@@ -47,8 +47,8 @@ func findProteins(seq string) {
 	ch := make(chan byte)
 	dnaChanToProtein(ch)
 
-	for _, v := range seq {
-		ch <- v
+	for i := range seq {
+		ch <- seq[i]
 	}
 }
 
@@ -57,7 +57,7 @@ func Orf() {
 	rc := reverse(compliment(seq))
 
 	for i := 0; i < 3; i++ {
-		findProteins(seq[i:len(seq-1)])
-		findProteins(rc[i:len(rc-1)])
+		findProteins(seq[i : len(seq)-1])
+		findProteins(rc[i : len(rc)-1])
 	}
 }
