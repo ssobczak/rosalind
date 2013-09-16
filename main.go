@@ -9,5 +9,5 @@ import (
 )
 
 func main() {
-	gorosalind.Pper()
+	gorosalind.Lcsm()
 }
