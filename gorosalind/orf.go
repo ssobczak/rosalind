@@ -53,7 +53,7 @@ func findProteins(seq string) {
 }
 
 func Orf() {
-	seq := readSeq()
+	seq := DnaFromFasta(FileFromStdin())[0].sequence
 	rc := reverse(compliment(seq))
 
 	for i := 0; i < 3; i++ {
