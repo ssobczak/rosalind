@@ -9,5 +9,5 @@ import (
 )
 
 func main() {
-	gorosalind.Sign()
+	gorosalind.Sseq()
 }
