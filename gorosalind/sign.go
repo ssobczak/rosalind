@@ -6,6 +6,7 @@ package gorosalind
 
 import (
 	"fmt"
+	"github.com/ssobczak/rosalind/permutable"
 	"log"
 )
 
@@ -31,7 +32,7 @@ func sign(n int) {
 	}
 
 	signPerm(a)
-	for next_permutation(a) {
+	for permutable.NextPermutation(permutable.PermInts(a)) {
 		signPerm(a)
 	}
 }

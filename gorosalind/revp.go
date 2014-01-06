@@ -50,5 +50,3 @@ func Revp() {
 		fmt.Printf("%d %d\n", r.start+1, r.length)
 	}
 }
-
-// TCAATGCATGCGGGTCTATATGCAT

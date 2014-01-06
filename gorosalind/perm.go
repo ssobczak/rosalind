@@ -6,6 +6,7 @@ package gorosalind
 
 import (
 	"fmt"
+	"github.com/ssobczak/rosalind/permutable"
 	"log"
 )
 
@@ -17,34 +18,6 @@ func factorial(n int) (ret int) {
 	}
 
 	return
-}
-
-func swap(x, y *int) {
-	tmp := *x
-	*x = *y
-	*y = tmp
-}
-
-func revert(a []int) {
-	for i := 0; i < len(a)/2; i++ {
-		swap(&a[i], &a[len(a)-i-1])
-	}
-}
-
-func next_permutation(a []int) bool {
-	for k := len(a) - 2; k >= 0; k-- {
-		if a[k] < a[k+1] {
-			for l := len(a) - 1; l > k; l-- {
-				if a[k] < a[l] {
-					swap(&a[k], &a[l])
-					revert(a[k+1 : len(a)])
-					return true
-				}
-			}
-		}
-	}
-
-	return false
 }
 
 func printPerm(a []int) {
@@ -69,7 +42,7 @@ func Perm() {
 	}
 
 	printPerm(a)
-	for next_permutation(a) {
+	for permutable.NextPermutation(permutable.PermInts(a)) {
 		printPerm(a)
 	}
 }
