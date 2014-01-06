@@ -6,6 +6,7 @@ package graph
 
 import (
 	"fmt"
+	"strings"
 )
 
 type Node struct {
@@ -16,10 +17,10 @@ type Node struct {
 
 type Graph map[int]Node
 
-func FromAdjList(string list) Node {
+func FromAdjList(list string) {
 	lines := strings.Split(list, "\n")
-	len := 0
-	fmt.Sscanf(lines[0], "%d", len)
+	length := 0
+	fmt.Sscanf(lines[0], "%d", length)
 
 	from, to := 0, 0
 	for i := 1; i != len(lines); i++ {
